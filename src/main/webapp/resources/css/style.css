@@ -1,0 +1,20 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.icon-align {
+	
+	 display: inline-flex;
+    vertical-align: middle;
+}
+.dados{
+	height: 65%;
+}
+
+.modal { width: 50% !important ; height:65% !important; max-height: 100% !important ; ;}

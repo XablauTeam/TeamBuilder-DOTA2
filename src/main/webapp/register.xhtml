@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<ui:composition template="template.xhtml">
+		<ui:define name="content">
+			<menu>
+	<h6 class="indigo-text">
+		<span class = "flow-text"><strong>TeamBuilderProject</strong> - Building best choices to competitive electronic games - </span>
+	</h6>
+	</menu>
+	<div class="section">
+	<h:messages
+								styleClass="errorMessage card-panel red lighten-2 white-text"
+								globalOnly="true">
+							</h:messages>
+	
+	</div>
+
+	<main>
+	<center>
+		<div class="z-depth-0 grey lighten-5 row"
+			style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+			<h6 class="indigo-text">Cadastro de usuário</h6>
+			<h:form>
+				<div class='row'>
+					<div class='input-field col s12'>
+						<h:inputText class='validate' type="email" name="email" id='email' value="#{registerUserMBean.email}"  />
+						<label for='email' data-error="wrong" data-success="" >Email</label>
+					</div>
+				</div>
+				<div class='row'>
+					<div class='input-field col s12'>
+						<h:inputText class='validate' type="text" name="username" id='username' value="#{registerUserMBean.nome}"  />
+						<label for='username'>Nome</label>
+					</div>
+				</div>
+				<div class='row'>
+					<div class='input-field col s6'>
+						<h:inputText class='validate' type="text" name="login" id='login' value="#{registerUserMBean.login}"/>
+						
+						<label for='login'>Login</label>
+					</div>				
+					<div class='input-field col s6'>
+						<h:inputSecret class='validate' type="password" name="password" id='password' value="#{registerUserMBean.senha}"/>
+						<label for='password'>Password</label>
+					</div>
+				</div>
+			<h:commandButton class="btn waves-effect waves-teal red" action="#{registerUserMBean.cancelar()}" value="Cancelar" /> &nbsp;
+			<h:commandButton class="btn waves-effect waves-light" action="#{registerUserMBean.criarUser()}" value="Registrar" />
+			</h:form>
+			 <div class="section"></div>
+    
+		</div>
+	</center>
+
+	<div class="section"></div>
+	<div class="section"></div>
+	</main>
+		</ui:define>
+		<ui:define name="javascript">
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

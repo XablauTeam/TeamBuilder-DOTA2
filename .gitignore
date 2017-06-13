@@ -1,0 +1,28 @@
+/build/
+
+### Java template
+*.class
+
+### Eclipse Template
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.classpath
+.tern-project
+
+# Eclipse Core
+.project
+
+# External tool builders
+.externalToolBuilders/
+/target/
+

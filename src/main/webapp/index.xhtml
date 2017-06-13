@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</h:head>
+<h:body>
+
+	<ui:composition template="template.xhtml">
+		<ui:define name="content">
+			<div class="section"></div>
+
+			
+			<center>
+
+				<div class="section"></div>
+
+				<h4 class="indigo-text">TeamBuilder</h4>
+				<h6 class="indigo-text">- Building best choices to competitive
+					electronic games -</h6>
+				<div class="section"></div>
+				<h:form class="col m12 push-s5" method="post">
+					<div class="container">
+
+						<div class="z-depth-1 grey lighten-4 row"
+							style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+							<h:messages
+								styleClass="errorMessage card-panel red lighten-2 white-text"
+								globalOnly="true">
+							</h:messages>
+							<div class='row'>
+								<div class='col m12'></div>
+							</div>
+
+							<div class='row'>
+								<div class='input-field col s12'>
+
+									<h:inputText class='validate' type="text" name="login"
+										id='login' value="#{loginMBean.login}" />
+									<label for='login'>Login</label>
+								</div>
+							</div>
+
+							<div class='row'>
+								<div class='input-field col s12'>
+									<h:inputSecret class='validate' type="password" name="password"
+										id='password' value="#{loginMBean.senha}" />
+									<label for='password'>Password</label>
+								</div>
+								<label style='float: right;'> <a class='pink-text'
+									href='#!'><b></b></a>
+								</label>
+							</div>
+
+							<br />
+							<center>
+								<div class='row'>
+									<h:commandButton
+										class='col s12 btn btn-large waves-effect indigo '
+										action="#{loginMBean.realizarLogin()}" value="lOGIN" />
+								</div>
+							</center>
+
+						</div>
+					</div>
+					<h:commandLink action="#{loginMBean.register()}"
+						value="Create account" />
+				</h:form>
+			</center>
+
+			<div class="section"></div>
+			<div class="section"></div>
+		</ui:define>
+		<ui:define name="javascript">
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
