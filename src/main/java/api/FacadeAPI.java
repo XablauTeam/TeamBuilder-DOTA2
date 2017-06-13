@@ -1,20 +1,22 @@
 package api;
 
+import api.AbstractProfile;
+import api.dota2.dto.DotaProfile;
 import api.exceptions.ConnectionException;
-import api.smite.SmiteProfile;
 
 public class FacadeAPI implements InterfaceAPI {
 	
-	private SmiteProfile profile;
+	private AbstractProfile profile;
 
 	public FacadeAPI()
 	{
-		profile = new SmiteProfile();
+		profile = new DotaProfile();
 	}
 
 	public AbstractProfile getProfile(String summoner, String region) throws ConnectionException
 	{
-		return profile.byName(new String[] { summoner }, region);
+		return profile.byName(new String[]
+		{ summoner }, region);
 	}
 	
 }

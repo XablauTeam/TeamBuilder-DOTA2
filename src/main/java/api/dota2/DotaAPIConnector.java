@@ -1,4 +1,4 @@
-package api.smite;
+package api.dota2;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import org.apache.http.util.EntityUtils;
 import api.exceptions.ConnectionException;
 
 
-public class SmiteAPIConnector
+public class DotaAPIConnector
 {
 	private CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
@@ -32,7 +32,7 @@ public class SmiteAPIConnector
 
 		} catch (ParseException | IOException e)
 		{
-			throw new ConnectionException("Não foi possivel realizar o request a API " +  e.getMessage());
+			throw new ConnectionException("NÃ£o foi possivel realizar o request a API", e);
 		}
 		return result;
 	}
