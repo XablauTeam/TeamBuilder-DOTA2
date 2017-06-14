@@ -4,48 +4,48 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
-import model.entities.LolPlayer;
-import model.persistence.dao.LolPlayerDAO;
+import model.entities.DotaPlayer;
+import model.persistence.dao.DotaPlayerDAO;
 
 @Stateless
-public class LolPlayerService {
+public class DotaPlayerService {
 	
-	private static LolPlayerDAO lolplayerDAO;
+	private static DotaPlayerDAO lolplayerDAO;
 	
 	
-	public LolPlayerService() {
-		lolplayerDAO = new LolPlayerDAO();
+	public DotaPlayerService() {
+		lolplayerDAO = new DotaPlayerDAO();
 	}
 
-	public void insert(LolPlayer player) {
+	public void insert(DotaPlayer player) {
 		lolplayerDAO.openCurrentSessionwithTransaction();
 		lolplayerDAO.insert(player);
 		lolplayerDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public void update(LolPlayer player) {
+	public void update(DotaPlayer player) {
 		lolplayerDAO.openCurrentSessionwithTransaction();
 		lolplayerDAO.update(player);
 		lolplayerDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public LolPlayer findById(Integer id) {
+	public DotaPlayer findById(Integer id) {
 		lolplayerDAO.openCurrentSession();
-		LolPlayer player = lolplayerDAO.findById(id);
+		DotaPlayer player = lolplayerDAO.findById(id);
 		lolplayerDAO.closeCurrentSession();
 		return player;
 	}
 
 	public void delete(Integer id) {
 		lolplayerDAO.openCurrentSessionwithTransaction();
-		LolPlayer player = lolplayerDAO.findById(id);
+		DotaPlayer player = lolplayerDAO.findById(id);
 		lolplayerDAO.delete(player);
 		lolplayerDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public List<LolPlayer> findAll() {
+	public List<DotaPlayer> findAll() {
 		lolplayerDAO.openCurrentSession();
-		List<LolPlayer> players = lolplayerDAO.findAll();
+		List<DotaPlayer> players = lolplayerDAO.findAll();
 		lolplayerDAO.closeCurrentSession();
 		return players;
 	}
@@ -58,7 +58,7 @@ public class LolPlayerService {
 
 
 
-	public LolPlayerDAO usuarioDAO() {
+	public DotaPlayerDAO usuarioDAO() {
 		return lolplayerDAO;
 	}
 }

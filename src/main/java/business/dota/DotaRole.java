@@ -1,15 +1,15 @@
-package business.lol;
+package business.dota;
 
-public enum LolRole {
-	TOP("TOP"),
+public enum DotaRole {
+	OFFLANE("OFFLANE"),
 	JUNGLER("JUNGLER"),
 	MID("MID"),
 	SUPPORT("SUPPORT"),
-	BOTTOM("BOTTOM");
+	CARRY("CARRY");
 	
 	private final String name;
 	
-	private LolRole(String name){
+	private DotaRole(String name){
 		this.name = name;
 	}
 	

@@ -1,4 +1,4 @@
-package business.lol;
+package business.dota;
 
 import java.util.ArrayList;
 
@@ -11,28 +11,28 @@ import business.TeamStatus;
 import business.exceptions.CannotInsertException;
 import model.entities.AbstractPlayer;
 import model.entities.AbstractTeam;
-import model.entities.LolPlayer;
-import model.entities.LolTeam;
-import model.persistence.service.LolTeamService;
+import model.entities.DotaPlayer;
+import model.entities.DotaTeam;
+import model.persistence.service.DotaTeamService;
 
 @Stateless
-public class LolTeamBean {
+public class DotaTeamBean {
 
 	@EJB
-	private LolTeamService lolTeamService;
+	private DotaTeamService dotaTeamService;
 	@EJB
-	private LolTeamProcessor lolTeamProcessor;
+	private DotaTeamProcessor dotaTeamProcessor;
 	@EJB
 	private PlayerBean playerBean;
 	
 	
 	
 	public AbstractTeam findTeam(AbstractPlayer player) {
-		ArrayList<LolTeam> teamList = (ArrayList<LolTeam>) lolTeamService.findAll();
+		ArrayList<DotaTeam> teamList = (ArrayList<DotaTeam>) dotaTeamService.findAll();
 		if (!teamList.isEmpty()) {
-			for (LolTeam teamAnalyzed : teamList) {
+			for (DotaTeam teamAnalyzed : teamList) {
 				if (teamAnalyzed.getStatus() != TeamStatus.COMPLETE && 
-						lolTeamProcessor.isRoleNeeded(teamAnalyzed, player)) {
+						dotaTeamProcessor.isRoleNeeded(teamAnalyzed, player)) {
 					return teamAnalyzed;
 				}
 			}
@@ -42,17 +42,17 @@ public class LolTeamBean {
 	}
 
 	public AbstractTeam createNewTeam(AbstractPlayer player) {
-		LolTeam lolTeam = new LolTeam();
-		lolTeamService.insert(lolTeam);
-		return lolTeam;
+		DotaTeam dotaTeam = new DotaTeam();
+		dotaTeamService.insert(dotaTeam);
+		return dotaTeam;
 	}
 
 	public void insertPlayerInTeam(AbstractPlayer player, AbstractTeam team) throws CannotInsertException {
-		lolTeamProcessor.insertPlayerInTeam(player, team);
-		lolTeamService.update((LolTeam) team);
+		dotaTeamProcessor.insertPlayerInTeam(player, team);
+		dotaTeamService.update((DotaTeam) team);
 		player.setTeamID(team.getIdTime());
 		player.setStatus(PlayerStatus.IN_TEAM);
-		playerBean.atualizarPlayer((LolPlayer)player);
+		playerBean.atualizarPlayer((DotaPlayer)player);
 	}
 
 	public boolean playerHasTeam(AbstractPlayer player) {
@@ -60,18 +60,18 @@ public class LolTeamBean {
 	}
 
 	public boolean removePlayerFromTeam(AbstractPlayer player) {
-		LolTeam team;
+		DotaTeam team;
 		if (player.getTeamID() != 0) {
-			team = lolTeamService.findById(player.getTeamID());
-			lolTeamProcessor.removePlayer(player, team);
-			lolTeamService.update(team);
+			team = dotaTeamService.findById(player.getTeamID());
+			dotaTeamProcessor.removePlayer(player, team);
+			dotaTeamService.update(team);
 			return true;
 		}
 		return false;
 	}
 	
-	public LolTeam findTeamByID(Integer playerID){
-		return lolTeamService.findById(playerID);
+	public DotaTeam findTeamByID(Integer playerID){
+		return dotaTeamService.findById(playerID);
 	}
 
 }

@@ -13,10 +13,10 @@ public class FacadeAPI implements InterfaceAPI {
 		profile = new DotaProfile();
 	}
 
-	public AbstractProfile getProfile(String summoner, String region) throws ConnectionException
+	public AbstractProfile getProfile(String summoner) throws ConnectionException
 	{
 		return profile.byName(new String[]
-		{ summoner }, region);
+		{ summoner });
 	}
 	
 }

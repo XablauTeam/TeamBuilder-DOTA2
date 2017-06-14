@@ -6,27 +6,27 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
-import business.lol.LolRegioes;
-import business.lol.LolRole;
+import business.dota.DotaRole;
+import business.dota.LolRegioes;
 
 @Entity
-@Table(name="LOLPLAYER")
-public class LolPlayer extends AbstractPlayer {
+@Table(name="DOTAPLAYER")
+public class DotaPlayer extends AbstractPlayer {
 	
-	@Column(name = "lolrole")
+	@Column(name = "dotarole")
 	@Enumerated(EnumType.STRING)
-	private LolRole role;
+	private DotaRole role;
 	
-	@Column(name = "lolregion")
+	@Column(name = "dotaregion")
 	@Enumerated(EnumType.STRING)
 	private LolRegioes region;
 
 	
-	public LolRole getRole() {
+	public DotaRole getRole() {
 		return role;
 	}
 
-	public void setRole(LolRole role) {
+	public void setRole(DotaRole role) {
 		this.role = role;
 	}
 

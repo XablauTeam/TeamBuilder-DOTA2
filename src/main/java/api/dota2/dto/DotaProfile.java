@@ -17,7 +17,7 @@ public class DotaProfile extends AbstractProfile
 	}
 
 	@Override
-	public AbstractProfile byName(String[] strings, String region) throws ConnectionException
+	public AbstractProfile byName(String[] strings) throws ConnectionException
 	{
 		return DotaAPI.getInstance().buildDotaPlayer(strings[0]);
 	}

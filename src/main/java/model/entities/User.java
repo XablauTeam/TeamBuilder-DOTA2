@@ -30,8 +30,8 @@ public class User {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToOne(cascade = CascadeType.ALL, targetEntity=LolPlayer.class)
-	private LolPlayer player;
+	@OneToOne(cascade = CascadeType.ALL, targetEntity=DotaPlayer.class)
+	private DotaPlayer player;
 
 	public User() {
 		super();
@@ -85,11 +85,11 @@ public class User {
 		this.email = email;
 	}
 
-	public LolPlayer getPlayer() {
+	public DotaPlayer getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(LolPlayer player) {
+	public void setPlayer(DotaPlayer player) {
 		this.player = player;
 	}
 

@@ -6,54 +6,54 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import business.TeamStatus;
-import model.entities.LolTeam;
-import model.persistence.dao.LolTeamDAO;
+import model.entities.DotaTeam;
+import model.persistence.dao.DotaTeamDAO;
 
 @Stateless
-public class LolTeamService {
+public class DotaTeamService {
 
-	private static LolTeamDAO lolteamDAO;
+	private static DotaTeamDAO lolteamDAO;
 
-	public LolTeamService() {
-			lolteamDAO = new LolTeamDAO();
+	public DotaTeamService() {
+			lolteamDAO = new DotaTeamDAO();
 		}
 
-	public void insert(LolTeam team) {
+	public void insert(DotaTeam team) {
 		lolteamDAO.openCurrentSessionwithTransaction();
 		lolteamDAO.insert(team);
 		lolteamDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public void update(LolTeam team) {
+	public void update(DotaTeam team) {
 		lolteamDAO.openCurrentSessionwithTransaction();
 		lolteamDAO.update(team);
 		lolteamDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public LolTeam findById(Integer id) {
+	public DotaTeam findById(Integer id) {
 		lolteamDAO.openCurrentSession();
-		LolTeam team = lolteamDAO.findById(id);
+		DotaTeam team = lolteamDAO.findById(id);
 		lolteamDAO.closeCurrentSession();
 		return team;
 	}
 	
-	public List<LolTeam> findIncompleteTeams(){
+	public List<DotaTeam> findIncompleteTeams(){
 		lolteamDAO.openCurrentSession();
-		ArrayList<LolTeam> teamList = (ArrayList<LolTeam>) lolteamDAO.findByField("status_time", TeamStatus.INCOMPLETE);
+		ArrayList<DotaTeam> teamList = (ArrayList<DotaTeam>) lolteamDAO.findByField("status_time", TeamStatus.INCOMPLETE);
 		lolteamDAO.closeCurrentSession();
 		return teamList;
 	}
 	
 	public void delete(Integer id) {
 		lolteamDAO.openCurrentSessionwithTransaction();
-		LolTeam team = lolteamDAO.findById(id);
+		DotaTeam team = lolteamDAO.findById(id);
 		lolteamDAO.delete(team);
 		lolteamDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public List<LolTeam> findAll() {
+	public List<DotaTeam> findAll() {
 		lolteamDAO.openCurrentSession();
-		List<LolTeam> teams = lolteamDAO.findAll();
+		List<DotaTeam> teams = lolteamDAO.findAll();
 		lolteamDAO.closeCurrentSession();
 		return teams;
 	}
@@ -64,7 +64,7 @@ public class LolTeamService {
 		lolteamDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public LolTeamDAO usuarioDAO() {
+	public DotaTeamDAO usuarioDAO() {
 		return lolteamDAO;
 	}
 }

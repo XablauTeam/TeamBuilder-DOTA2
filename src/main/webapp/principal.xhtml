@@ -17,22 +17,22 @@
 					<div class="col s3 side-nav fixed">
 						<ul id="slide-out">
 							<li><h:form>
-									<h:commandLink class="" action="#{lolProfileMBean.logout()}"
+									<h:commandLink class="" action="#{dotaProfileMBean.logout()}"
 										value="Logout" />
 								</h:form></li>
-							<li><c:if test="${empty lolProfileMBean.user.player}">
+							<li><c:if test="${empty dotaProfileMBean.user.player}">
 									<h:form>
 										<a class="modal-trigger" href="#modal1">Cadastrar Profile</a>
 
 									</h:form>
-								</c:if> <c:if test="${not empty lolProfileMBean.user.player}">
+								</c:if> <c:if test="${not empty dotaProfileMBean.user.player}">
 									<h:form>
 										<a class="modal-trigger" href="#modal2">Atualizar Profile</a>
 									</h:form>
 								</c:if></li>
 
 							<li><h:form>
-								<c:if test="${not empty lolProfileMBean.user.player}">
+								<c:if test="${not empty dotaProfileMBean.user.player}">
 									<a class="modal-trigger" href="#modal3">Procurar Time</a>
 									</c:if>
 								</h:form></li>
@@ -46,8 +46,9 @@
 						globalOnly="true">
 					</h:messages>
 					<!-- Teal page content  -->
-					<span class="flow-text"> Bem vindo
-						#{lolProfileMBean.user.nome}, </span>
+					<h4 class="indigo-text">TeamBuilder<strong> DOTA-2</strong></h4>
+				<h6 class="indigo-text">- Building best choices to competitive
+					electronic games -</h6>
 						
 					
 					
@@ -59,9 +60,9 @@
 	              					<span class="card-title flow-text">Dados do Usuário</span>
 	              					
 	              					<ul>
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">person_pin</i> #{lolProfileMBean.user.login}</li>
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">email</i> #{lolProfileMBean.user.email}</li>
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{lolProfileMBean.user.nome}</li>
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">person_pin</i> #{dotaProfileMBean.user.login}</li>
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">email</i> #{dotaProfileMBean.user.email}</li>
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{dotaProfileMBean.user.nome}</li>
 		              					</ul>
 	              					
 	              					
@@ -73,21 +74,21 @@
           					<div class="card-panel deep-purple lighten-5">
 	            				<div class="card-content blue-text text-darken-2">
 	              					<span class="card-title flow-text">Dados do Jogador</span>
-	              					<c:if test="${not empty lolProfileMBean.user.player}">
+	              					<c:if test="${not empty dotaProfileMBean.user.player}">
 	              					<ul>
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">email</i> #{lolProfileMBean.player.playerName}</li>
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{lolProfileMBean.player.playerLevel}</li>
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{lolProfileMBean.player.region.name()}</li>
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{lolProfileMBean.player.status.name}</li>
-	              						<c:if test="${lolProfileMBean.player.teamID != 0}">
-	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{lolProfileMBean.player.teamID}</li>
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">email</i> #{dotaProfileMBean.player.playerName}</li>
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{dotaProfileMBean.player.playerLevel}</li>
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{dotaProfileMBean.player.region.name()}</li>
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{dotaProfileMBean.player.status.name}</li>
+	              						<c:if test="${dotaProfileMBean.player.teamID != 0}">
+	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i>  #{dotaProfileMBean.player.teamID}</li>
 	              						</c:if>
-	              						<c:if test="${lolProfileMBean.player.teamID == 0}">
+	              						<c:if test="${dotaProfileMBean.player.teamID == 0}">
 	              						<li> <i class="small material-icons black-text text-darken-2 icon-align ">assignment_ind</i> - </li>
 	              						</c:if>
 	              					</ul>
 	              					</c:if>
-	              					<c:if test="${empty lolProfileMBean.user.player}">
+	              					<c:if test="${empty dotaProfileMBean.user.player}">
 	              					<p>Você ainda não tem um jogador associado! <a class="modal-trigger" href="#modal1">Faça isso aqui!</a> </p>
 	              					</c:if>
 	            				</div>
@@ -100,7 +101,7 @@
           					<div class="card-panel deep-purple lighten-5">
 	            				<div class="card-content blue-text text-darken-2">
 	              					<span class="card-title flow-text">Dados do Time</span>
-	              					<c:if test="#{lolProfileMBean.player.teamID != 0}">
+	              					<c:if test="#{dotaProfileMBean.player.teamID != 0}">
 				
 					<h:panelGroup id="procurarTimeShow">
 						<h:form>
@@ -108,78 +109,78 @@
 								<thead>
 									<tr>
 										<th></th>
-										<th>Top</th>
+										<th>Offlane</th>
 										<th>Jungler</th>
 										<th>Mid</th>
 										<th>Support</th>
-										<th>Bottom</th>
+										<th>Carry</th>
 									</tr>
 								</thead>
 
 								<tbody>
 									<tr>
 										<td>Game Id</td>
-										<c:if test="${not empty lolProfileMBean.team.top}">
-										<td>#{lolProfileMBean.team.top.playerName}</td>
+										<c:if test="${not empty dotaProfileMBean.team.offlane}">
+										<td>#{dotaProfileMBean.team.offlane.playerName}</td>
 										</c:if>
-										<c:if test="${empty lolProfileMBean.team.top}">
+										<c:if test="${empty dotaProfileMBean.team.offlane}">
 										<td> - </td>
 										</c:if>
-										<c:if test="${not empty lolProfileMBean.team.jungler}">
-										<td>#{lolProfileMBean.team.jungler.playerName}</td>
+										<c:if test="${not empty dotaProfileMBean.team.jungler}">
+										<td>#{dotaProfileMBean.team.jungler.playerName}</td>
 										</c:if>
-										<c:if test="${empty lolProfileMBean.team.jungler}">
+										<c:if test="${empty dotaProfileMBean.team.jungler}">
 										<td> - </td>
 										</c:if>
-										<c:if test="${not empty lolProfileMBean.team.mid}">
-										<td>#{lolProfileMBean.team.mid.playerName}</td>
+										<c:if test="${not empty dotaProfileMBean.team.mid}">
+										<td>#{dotaProfileMBean.team.mid.playerName}</td>
 										</c:if>
-										<c:if test="${empty lolProfileMBean.team.mid}">
+										<c:if test="${empty dotaProfileMBean.team.mid}">
 										<td> - </td>
 										</c:if>
-										<c:if test="${not empty lolProfileMBean.team.support}">
-										<td>#{lolProfileMBean.team.support.playerName}</td>
+										<c:if test="${not empty dotaProfileMBean.team.support}">
+										<td>#{dotaProfileMBean.team.support.playerName}</td>
 										</c:if>
-										<c:if test="${empty lolProfileMBean.team.support}">
+										<c:if test="${empty dotaProfileMBean.team.support}">
 										<td> - </td>
 										</c:if>
-										<c:if test="${not empty lolProfileMBean.team.bottom}">
-										<td>#{lolProfileMBean.team.bottom.playerName}</td>
+										<c:if test="${not empty dotaProfileMBean.team.carry}">
+										<td>#{dotaProfileMBean.team.carry.playerName}</td>
 										</c:if>
-										<c:if test="${empty lolProfileMBean.team.bottom}">
+										<c:if test="${empty dotaProfileMBean.team.carry}">
 										<td> - </td>
 										</c:if>
 									</tr>
 									<tr>
 									<td>Level</td>
-										<c:if test="${not empty lolProfileMBean.team.top}">
-										<td>#{lolProfileMBean.team.top.playerLevel}</td>
+										<c:if test="${not empty dotaProfileMBean.team.offlane}">
+										<td>#{dotaProfileMBean.team.offlane.playerLevel}</td>
 										</c:if>
-										<c:if test="${empty lolProfileMBean.team.top}">
+										<c:if test="${empty dotaProfileMBean.team.offlane}">
 										<td> - </td>
 										</c:if>
-									<c:if test="${not empty lolProfileMBean.team.jungler}">
-										<td>#{lolProfileMBean.team.jungler.playerLevel}</td>
+									<c:if test="${not empty dotaProfileMBean.team.jungler}">
+										<td>#{dotaProfileMBean.team.jungler.playerLevel}</td>
 										</c:if>
-										<c:if test="${empty lolProfileMBean.team.jungler}">
+										<c:if test="${empty dotaProfileMBean.team.jungler}">
 										<td> - </td>
 										</c:if>
-									<c:if test="${not empty lolProfileMBean.team.mid}">
-										<td>#{lolProfileMBean.team.mid.playerLevel}</td>
+									<c:if test="${not empty dotaProfileMBean.team.mid}">
+										<td>#{dotaProfileMBean.team.mid.playerLevel}</td>
 									</c:if>
-									<c:if test="${empty lolProfileMBean.team.mid}">
+									<c:if test="${empty dotaProfileMBean.team.mid}">
 										<td> - </td>
 										</c:if>
-									<c:if test="${not empty lolProfileMBean.team.support}">
-										<td>#{lolProfileMBean.team.support.playerLevel}</td>
+									<c:if test="${not empty dotaProfileMBean.team.support}">
+										<td>#{dotaProfileMBean.team.support.playerLevel}</td>
 									</c:if>
-									<c:if test="${empty lolProfileMBean.team.support}">
+									<c:if test="${empty dotaProfileMBean.team.support}">
 										<td> - </td>
 										</c:if>
-									<c:if test="${not empty lolProfileMBean.team.bottom}">
-										<td>#{lolProfileMBean.team.bottom.playerLevel}</td>
+									<c:if test="${not empty dotaProfileMBean.team.carry}">
+										<td>#{dotaProfileMBean.team.carry.playerLevel}</td>
 									</c:if>
-									<c:if test="${empty lolProfileMBean.team.bottom}">
+									<c:if test="${empty dotaProfileMBean.team.carry}">
 										<td> - </td>
 										</c:if>
 									</tr>
@@ -217,15 +218,15 @@
 								<div class='input-field col s6'>
 									<h:inputText class='validate' type="text" name="incluirProfile"
 										id='incluirProfile'
-										value="#{lolProfileMBean.player.playerName}" />
+										value="#{dotaProfileMBean.player.playerName}" />
 									<label for="incluirProfile">Game Profile</label>
 								</div>
 								<div class='col s6'>
 									<label for='IncluirRegiaoProfile'>Região</label>
 									<h:selectOneMenu id="IncluirRegiaoProfile"
-										value="#{lolProfileMBean.player.region}">
+										value="#{dotaProfileMBean.player.region}">
 										<f:selectItem itemValue="" itemLabel="Selecione" />
-										<f:selectItems value="#{lolProfileMBean.regioes}"
+										<f:selectItems value="#{dotaProfileMBean.regioes}"
 											var="_regioes" itemLabel="#{_regioes.name}"
 											itemValue="#{_regioes}" />
 									</h:selectOneMenu>
@@ -233,21 +234,21 @@
 								<div class='col s6'>
 									<label for='IncluirRoleProfile'>Posição</label>
 									<h:selectOneMenu id="IncluirRoleProfile"
-										value="#{lolProfileMBean.player.role}">
+										value="#{dotaProfileMBean.player.role}">
 										<f:selectItem itemValue="" itemLabel="Selecione" />
-										<f:selectItems value="#{lolProfileMBean.roles}" var="_role"
+										<f:selectItems value="#{dotaProfileMBean.roles}" var="_role"
 											itemLabel="#{_role.name}" itemValue="#{_role}" />
 									</h:selectOneMenu>
 								</div>
 								<div class='col s6'>
 									<label for='incluirStatusProfile'>Status</label>
-									<h:selectOneMenu id="incluirStatusProfile"	value="#{lolProfileMBean.player.status}" styleClass="selectContainer" disabled="true">
-										<f:selectItems value="#{lolProfileMBean.playerStatus}"	var="_status" itemLabel="#{_status.name}"	itemValue="#{_status}" />
+									<h:selectOneMenu id="incluirStatusProfile"	value="#{dotaProfileMBean.player.status}" styleClass="selectContainer" disabled="true">
+										<f:selectItems value="#{dotaProfileMBean.playerStatus}"	var="_status" itemLabel="#{_status.name}"	itemValue="#{_status}" />
 									</h:selectOneMenu>
 								</div>
 							</div>
 							<h:commandButton class="btn waves-effect waves-light"
-								action="#{lolProfileMBean.cadastrarPlayer()}" value="Gravar">
+								action="#{dotaProfileMBean.cadastrarPlayer()}" value="Gravar">
 
 							</h:commandButton>
 						</h:form>
@@ -268,7 +269,7 @@
 								<div class='input-field col s6'>
 									<h:inputText class='validate' type="text"
 										name="atualizarProfile" id='atualizarProfile'
-										value="#{lolProfileMBean.player.playerName}" />
+										value="#{dotaProfileMBean.player.playerName}" />
 									<label for="atualizarProfile">Game Profile</label>
 								</div>
 								
@@ -276,26 +277,26 @@
 							<div class='col s6'>
 									<label for='IncluirRegiaoProfile'>Região</label>
 									<h:selectOneMenu id="atualizarRegiaoProfile"
-										value="#{lolProfileMBean.player.region}">
+										value="#{dotaProfileMBean.player.region}">
 										<f:selectItem itemValue="" itemLabel="Selecione" />
-										<f:selectItems value="#{lolProfileMBean.regioes}" var="_regioes" itemLabel="#{_regioes.name}" itemValue="#{_regioes}" />
+										<f:selectItems value="#{dotaProfileMBean.regioes}" var="_regioes" itemLabel="#{_regioes.name}" itemValue="#{_regioes}" />
 									</h:selectOneMenu>
 								</div>
 								<div class='col s6'>
 									<label for='IncluirRoleProfile'>Posição</label>
-									<h:selectOneMenu id="atualizarRoleProfile" value="#{lolProfileMBean.player.role}">
+									<h:selectOneMenu id="atualizarRoleProfile" value="#{dotaProfileMBean.player.role}">
 										<f:selectItem itemValue="" itemLabel="Selecione" />
-										<f:selectItems value="#{lolProfileMBean.roles}" var="_role"	itemLabel="#{_role.name}" itemValue="#{_role}" />
+										<f:selectItems value="#{dotaProfileMBean.roles}" var="_role"	itemLabel="#{_role.name}" itemValue="#{_role}" />
 									</h:selectOneMenu>
 								</div>
 								<div class='col s6'>
 									<label for='incluirStatusProfile'>Status</label>
-									<h:selectOneMenu id="incluirStatusProfile"	value="#{lolProfileMBean.player.status}" styleClass="selectContainer">
-										<f:selectItems value="#{lolProfileMBean.playerStatus}" var="_status" itemLabel="#{_status.name}" itemValue="#{_status}" />
+									<h:selectOneMenu id="incluirStatusProfile"	value="#{dotaProfileMBean.player.status}" styleClass="selectContainer">
+										<f:selectItems value="#{dotaProfileMBean.playerStatus}" var="_status" itemLabel="#{_status.name}" itemValue="#{_status}" />
 									</h:selectOneMenu>
 								</div>
 							<h:commandButton class="btn waves-effect waves-light"
-								action="#{lolProfileMBean.cadastrarPlayer()}" value="Atualizar" />
+								action="#{dotaProfileMBean.cadastrarPlayer()}" value="Atualizar" />
 						</h:form>
 					</h:panelGroup>
 				</div>
@@ -317,7 +318,7 @@
 							</div>
 							<h:commandButton
 								class="btn waves-effect waves-light center-align col s12 m4 l8 valign-wrapper"
-								action="#{lolProfileMBean.procurarTime()}" value="Clique Aqui" />
+								action="#{dotaProfileMBean.procurarTime()}" value="Clique Aqui" />
 						</h:form>
 					</h:panelGroup>
 				</div>

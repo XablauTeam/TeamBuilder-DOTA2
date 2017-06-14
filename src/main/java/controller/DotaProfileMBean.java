@@ -11,30 +11,30 @@ import javax.faces.bean.SessionScoped;
 
 import business.PlayerBean;
 import business.PlayerStatus;
+import business.dota.DotaRole;
+import business.dota.DotaTeamBean;
+import business.dota.LolRegioes;
 import business.exceptions.BusinessException;
-import business.lol.LolRegioes;
-import business.lol.LolRole;
-import business.lol.LolTeamBean;
-import model.entities.LolPlayer;
-import model.entities.LolTeam;
+import model.entities.DotaPlayer;
+import model.entities.DotaTeam;
 import model.entities.User;
 
-@ManagedBean(name = "lolProfileMBean")
+@ManagedBean(name = "dotaProfileMBean")
 @SessionScoped
-public class LolProfileMBean extends GenericMBean {
+public class DotaProfileMBean extends GenericMBean {
 
 	@ManagedProperty("#{loginMBean.user}")
 	private User user;
 
-	private LolPlayer player;
+	private DotaPlayer player;
 
-	private LolTeam team;
+	private DotaTeam team;
 
 	@EJB
 	PlayerBean playerBean;
 
 	@EJB
-	LolTeamBean teamBean;
+	DotaTeamBean teamBean;
 
 	@PostConstruct
 	public void onLoad() {
@@ -42,7 +42,7 @@ public class LolProfileMBean extends GenericMBean {
 			this.player = playerBean.findById(user.getIdUsuario());
 			team = teamBean.findTeamByID(this.player.getTeamID());
 		} catch (BusinessException e) {
-			player = new LolPlayer();
+			player = new DotaPlayer();
 		}
 	}
 
@@ -61,9 +61,9 @@ public class LolProfileMBean extends GenericMBean {
 		try {
 			if(user.getPlayer().getTeamID() != 0)
 				teamBean.removePlayerFromTeam(player);
-			team = (LolTeam) teamBean.findTeam(player);
+			team = (DotaTeam) teamBean.findTeam(player);
 			if(team == null)
-				team = (LolTeam) teamBean.createNewTeam(player);
+				team = (DotaTeam) teamBean.createNewTeam(player);
 			teamBean.insertPlayerInTeam(player, team);
 		} catch (Exception e) {
 			incluirErro(e.getMessage());
@@ -79,19 +79,19 @@ public class LolProfileMBean extends GenericMBean {
 		this.user = user;
 	}
 
-	public LolPlayer getPlayer() {
+	public DotaPlayer getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(LolPlayer player) {
+	public void setPlayer(DotaPlayer player) {
 		this.player = player;
 	}
 
-	public LolTeam getTeam() {
+	public DotaTeam getTeam() {
 		return team;
 	}
 
-	public void setTeam(LolTeam team) {
+	public void setTeam(DotaTeam team) {
 		this.team = team;
 	}
 
@@ -103,9 +103,9 @@ public class LolProfileMBean extends GenericMBean {
 		return itens;
 	}
 
-	public List<LolRole> getRoles() {
-		List<LolRole> itens = new ArrayList<LolRole>();
-		for (LolRole role : LolRole.values()) {
+	public List<DotaRole> getRoles() {
+		List<DotaRole> itens = new ArrayList<DotaRole>();
+		for (DotaRole role : DotaRole.values()) {
 			itens.add(role);
 		}
 		return itens;

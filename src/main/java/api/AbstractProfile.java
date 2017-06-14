@@ -41,5 +41,5 @@ public abstract class AbstractProfile {
 		this.summonerLevel = summonerLevel;
 	}
 
-	public abstract AbstractProfile byName(String[] strings, String region) throws ConnectionException;
+	public abstract AbstractProfile byName(String[] strings) throws ConnectionException;
 }

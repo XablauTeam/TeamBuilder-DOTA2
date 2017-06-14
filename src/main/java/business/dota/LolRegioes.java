@@ -1,4 +1,4 @@
-package business.lol;
+package business.dota;
 
 public enum LolRegioes {
 	br("br1"), 

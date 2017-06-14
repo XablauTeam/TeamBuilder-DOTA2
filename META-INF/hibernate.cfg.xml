@@ -19,8 +19,8 @@
 		<property name="format_sql">true</property>
 
 		<mapping class="model.entities.User" />
-		<mapping class="model.entities.LolTeam" />
-		<mapping class="model.entities.LolPlayer" />
+		<mapping class="model.entities.DotaTeam" />
+		<mapping class="model.entities.DotaPlayer" />
 	
 	</session-factory>
 </hibernate-configuration>

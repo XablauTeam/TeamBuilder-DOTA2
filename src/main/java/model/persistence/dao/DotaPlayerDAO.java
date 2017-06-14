@@ -8,13 +8,13 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import model.entities.LolPlayer;
+import model.entities.DotaPlayer;
 
-public class LolPlayerDAO implements GenericDAO<LolPlayer, Integer> {
+public class DotaPlayerDAO implements GenericDAO<DotaPlayer, Integer> {
 	private Session currentSession;
 	private Transaction currentTransaction;
 
-	public LolPlayerDAO() {
+	public DotaPlayerDAO() {
 	}
 	
 	public Session openCurrentSession() {
@@ -39,7 +39,7 @@ public class LolPlayerDAO implements GenericDAO<LolPlayer, Integer> {
 	
 	private static SessionFactory getSessionFactory() {
 		Configuration configuration = new Configuration().configure("/hibernate.cfg.xml");
-		configuration.addAnnotatedClass(LolPlayer.class);
+		configuration.addAnnotatedClass(DotaPlayer.class);
 		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties());
 		SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
@@ -62,32 +62,32 @@ public class LolPlayerDAO implements GenericDAO<LolPlayer, Integer> {
 		this.currentTransaction = currentTransaction;
 	}
 
-	public LolPlayer findById(Integer id) {
-		LolPlayer player = (LolPlayer) getCurrentSession().get(LolPlayer.class, id);
+	public DotaPlayer findById(Integer id) {
+		DotaPlayer player = (DotaPlayer) getCurrentSession().get(DotaPlayer.class, id);
 		return player;
 	}
 
-	public void insert(LolPlayer player) {
+	public void insert(DotaPlayer player) {
 		getCurrentSession().save(player);
 	}
 
-	public void delete(LolPlayer player) {
+	public void delete(DotaPlayer player) {
 		getCurrentSession().delete(player);
 	}
 
-	public void update(LolPlayer player) {
+	public void update(DotaPlayer player) {
 		getCurrentSession().update(player);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<LolPlayer> findAll() {
-		List<LolPlayer> players = (List<LolPlayer>) getCurrentSession().createQuery("FROM lolplayer").list();
+	public List<DotaPlayer> findAll() {
+		List<DotaPlayer> players = (List<DotaPlayer>) getCurrentSession().createQuery("FROM DotaPlayer").list();
 		return players;
 	}
 	
 	public void deleteAll(){
-		List<LolPlayer> players = findAll();
-		for (LolPlayer player : players)
+		List<DotaPlayer> players = findAll();
+		for (DotaPlayer player : players)
 			delete(player);
 	}
 }

@@ -1,9 +1,9 @@
-package business.lol;
+package business.dota;
 
 import business.PlayerBuilder;
 import model.entities.AbstractPlayer;
 
-public class LolPlayerBuilder implements PlayerBuilder{
+public class DotaPlayerBuilder implements PlayerBuilder{
 
 	@Override
 	public AbstractPlayer createAPlayer() {
